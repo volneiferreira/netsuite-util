@@ -81,6 +81,39 @@ var UtilNs1 = {
     },
 
     /**
+     * Loading util
+     */
+    Loading: {
+
+        /**
+         * Loading ID.
+         */
+        ID: 'util-ns-1-loading',
+        
+        /**
+         * Show loading.
+         */
+        show: function () {
+
+            loading = document.getElementById(this.ID);
+
+            if (!loading) {
+                loading = UtilNs1._createFadingElement({ id: this.ID });
+            }
+
+            UtilNs1._displayElement(loading, true);
+        },
+
+        /**
+         * Close loading
+         */
+        close: function () {
+            UtilNs1._displayElement(document.getElementById(this.ID), false);
+        }
+        
+    },
+
+    /**
      * Modal util.
      */
     Modal: {
@@ -221,6 +254,74 @@ var UtilNs1 = {
             for (var line = 1, lineCount = nlapiGetLineItemCount(sublistId); line <= lineCount; line++) {
                 cb(line, lineCount);
             }
+        }
+    },
+
+    /**
+     * Create fading element.
+     *
+     * @param {object} options
+     * @returns {HTMLDivElement}
+     * @private
+     */
+    _createFadingElement: function (options) {
+
+        fading = document.createElement('div');
+
+        fading.id = options.id;
+        fading.style.display = 'none';
+        fading.style.position = 'fixed';
+        fading.style.zIndex = '1000';
+        fading.style.left = 0;
+        loading.style.top = 0;
+        fading.style.width = '100%';
+        fading.style.height = '100%';
+        fading.style.overflow = 'hidden';
+        fading.style.backgroundColor = 'rgba(240, 240, 240, 0.5)';
+
+        document.body.appendChild(fading);
+
+        return fading;
+    },
+
+    /**
+     * Display element.
+     *
+     * @param {HTMLElement} element
+     * @param {boolean} display
+     * @private
+     */
+    _displayElement: function (element, display) {
+        if (display) {
+            UtilNs1._adjustDefaultElements(false);
+            element.style.display = 'block';
+        } else {
+            UtilNs1._adjustDefaultElements(true);
+            element.style.display = 'none';
+        }
+    },
+
+    /**
+     * Adjust default elements.
+     *
+     * @param {boolean} adjust
+     * @private
+     */
+    _adjustDefaultElements: function (adjust) {
+
+        var body = document.getElementsByTagName('body')[0],
+            html = document.getElementsByTagName('html')[0];
+
+        if (adjust) {
+            body.style.overflow = 'hidden';
+            body.style.height = 'auto';
+            html.style.overflow = 'hidden';
+            html.style.height = 'auto';
+        } else {
+            body.style.overflow = 'auto';
+            body.style.height = 'auto';
+            html.style.overflow = 'auto';
+            html.style.height = 'auto';
         }
     }
 };
