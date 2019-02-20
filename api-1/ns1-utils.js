@@ -4,7 +4,7 @@
  * @author Volnei Ferreira
  * @namespace
  */
-var UtilNs1 = {
+var Ns1Utils = {
 
     /**
      * Field util.
@@ -98,17 +98,17 @@ var UtilNs1 = {
             loading = document.getElementById(this.ID);
 
             if (!loading) {
-                loading = UtilNs1._createFadingElement({ id: this.ID });
+                loading = Ns1Utils._createFadingElement({ id: this.ID });
             }
 
-            UtilNs1._displayElement(loading, true);
+            Ns1Utils._displayElement(loading, true);
         },
 
         /**
          * Close loading
          */
         close: function () {
-            UtilNs1._displayElement(document.getElementById(this.ID), false);
+            Ns1Utils._displayElement(document.getElementById(this.ID), false);
         }
         
     },
@@ -293,10 +293,10 @@ var UtilNs1 = {
      */
     _displayElement: function (element, display) {
         if (display) {
-            UtilNs1._adjustDefaultElements(false);
+            Ns1Utils._adjustDefaultElements(false);
             element.style.display = 'block';
         } else {
-            UtilNs1._adjustDefaultElements(true);
+            Ns1Utils._adjustDefaultElements(true);
             element.style.display = 'none';
         }
     },
