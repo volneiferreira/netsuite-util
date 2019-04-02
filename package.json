@@ -1,0 +1,36 @@
+{
+  "name": "netsuite-util",
+  "version": "1.0.0",
+  "description": "Library with NetSuite util functions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/volneiferreira/netsuite-util.git"
+  },
+  "author": "Volnei Ferreira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/volneiferreira/netsuite-util/issues"
+  },
+  "homepage": "https://github.com/volneiferreira/netsuite-util#readme",
+  "devDependencies": {
+    "standard": "^12.0.1"
+  },
+  "standard": {
+    "globals": [
+      "define",
+      "require",
+      "log",
+      "nlapiGetLineItemCount",
+      "nlapiSetRedirectURL",
+      "nlapiGetRecordType",
+      "nlapiGetRecordId",
+      "nlapiResolveURL",
+      "nlapiRequestURL",
+      "nlExtOpenWindow"
+    ]
+  }
+}

@@ -22,28 +22,28 @@ define(['N/xml'], function (xml) {
      * @returns {{}}
      */
     toJson: function (xmlDocument) {
-      var obj, i, item, nodeName, old;
-      obj = {};
+      var obj, i, item, nodeName, old
+      obj = {}
       if (xmlDocument.nodeType === xml.NodeType.TEXT_NODE) {
-        obj = xmlDocument.nodeValue;
+        obj = xmlDocument.nodeValue
       }
       if (xmlDocument.hasChildNodes()) {
         for (i = 0; i < xmlDocument.childNodes.length; i++) {
-          item = xmlDocument.childNodes[i];
-          nodeName = item.nodeName;
+          item = xmlDocument.childNodes[i]
+          nodeName = item.nodeName
           if (obj[nodeName] === undefined) {
-            obj[nodeName] = this.toJson(item);
+            obj[nodeName] = this.toJson(item)
           } else {
             if (!obj[nodeName].push) {
-              old = obj[nodeName];
-              obj[nodeName] = [];
-              obj[nodeName].push(old);
+              old = obj[nodeName]
+              obj[nodeName] = []
+              obj[nodeName].push(old)
             }
-            obj[nodeName].push(this.toJson(item));
+            obj[nodeName].push(this.toJson(item))
           }
         }
       }
-      return obj;
+      return obj
     }
   }
-});
+})
