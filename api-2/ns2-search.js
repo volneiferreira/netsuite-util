@@ -13,15 +13,16 @@ define([], function () {
      */
     runSearchPaged: function (options) {
       const limit = options.limit || 30
+      const page = parseInt(options.page, 10) || 0
       const pagedData = options.search.runPaged({ pageSize: limit })
-      var page = parseInt(context.page, 10) - 1
-
-      if (isNaN(page)) page = 0
 
       const data = {
+        count: pagedData.count,
         pages: pagedData.pageRanges.length,
-        currentPage: page + 1,
-        results: pagedData.fetch({ index: page }).data
+        currentPage: page,
+        results: pagedData.count
+          ? pagedData.fetch({ index: page }).data
+          : []
       }
 
       if (options.mapResults) {
