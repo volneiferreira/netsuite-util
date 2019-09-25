@@ -24,7 +24,8 @@ define(['N/xml'], function (xml) {
     toJson: function (xmlDocument) {
       var obj, i, item, nodeName, old
       obj = {}
-      if (xmlDocument.nodeType === xml.NodeType.TEXT_NODE) {
+      if (xmlDocument.nodeType === xml.NodeType.TEXT_NODE ||
+        xmlDocument.nodeType === xml.NodeType.CDATA_SECTION_NODE) {
         obj = xmlDocument.nodeValue
       }
       if (xmlDocument.hasChildNodes()) {
